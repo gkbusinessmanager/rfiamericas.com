@@ -787,3 +787,14 @@ function remove_price_schema_for_guests($markup, $product) {
     return $markup;
 }
 
+
+
+
+// Remove WPBakery custom heading class
+add_filter( 'vc_shortcode_output', function( $output, $obj, $atts ) {
+    if ( $obj->settings( 'base' ) === 'vc_custom_heading' ) {
+        // Remove unwanted class
+        $output = str_replace( 'vc_do_custom_heading', '', $output );
+    }
+    return $output;
+}, 10, 3 );
